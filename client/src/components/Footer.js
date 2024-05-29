@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <>
-      <section className=" py-4">
+      <section>
         <div className="max-w-screen-xl bg-amber-300 mx-auto flex flex-col md:flex-row justify-between items-center px-10 py-20 shadow-md rounded-lg transform translate-y-1/2">
           <div>
             <h3 className="text-3xl font-bold">Ready to get started?</h3>
@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
       </section>
       
-      <footer className="bg-gray-800 text-white py-28 mt-11">
+      <footer className="bg-gray-800 text-white py-32 mt-1/2">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-10">
           <div>
             <h3 className="text-2xl font-bold">Khushil Patel</h3>

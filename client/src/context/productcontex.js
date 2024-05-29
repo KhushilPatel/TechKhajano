@@ -15,7 +15,7 @@ const initialState = {
   singleProduct: {},
 };
 
-const AppProvider = ({ children }) => {
+const AppProvider = ({ children }) => {         //In context, children is app component
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getProducts = async (url) => {

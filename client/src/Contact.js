@@ -1,87 +1,81 @@
-import styled from "styled-components";
+import React from 'react';
+import { useState } from 'react';
 
+import { toast } from 'react-toastify';
+import { useAuth } from './store/auth';
+
+const defaultContactForm={
+  username:"",
+  email:"",
+  message:""
+
+}
 const Contact = () => {
-  const Wrapper = styled.section`
-    padding: 9rem 0 5rem 0;
-    text-align: center;
 
-    .container {
-      margin-top: 6rem;
+  const [contact, setcontact] = useState(defaultContactForm)
+  const {user}=useAuth()
+ 
+  const [userData, setUserData] = useState(true)
 
-      .contact-form {
-        max-width: 50rem;
-        margin: auto;
+  if(userData && user){
+    setcontact({
+      username:user?.username,
+      email:user?.email,
+      message:""
+    })
+    setUserData(false)
+  }
+  function handleInputChange(e) {
+    let name=e.target.name
+    let value=e.target.value
+   setcontact((prev)=>({
+      ...prev,
+      [name]:value
+   }))
+  }
 
-        .contact-inputs {
-          display: flex;
-          flex-direction: column;
-          gap: 3rem;
-
-          input[type="submit"] {
-            cursor: pointer;
-            transition: all 0.2s;
-
-            &:hover {
-              background-color: ${({ theme }) => theme.colors.white};
-              border: 1px solid ${({ theme }) => theme.colors.btn};
-              color: ${({ theme }) => theme.colors.btn};
-              transform: scale(0.9);
-            }
-          }
-        }
-      }
-    }
-  `;
-
+  const submitForm=async(e)=> {
+    e.preventDefault()
+   try {
+     const response= await fetch("http://localhost:4000/api/form/contact",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(contact)
+     })
+     if(response.ok){
+      setcontact(defaultContactForm)
+      const data=await response.json();
+      console.log(data);
+      toast.success("Message sent succesfully")
+     }
+   } catch (error) {
+    toast.error("Message not send")
+   } 
+   }
   return (
-    <Wrapper>
-      <h2 className="common-heading">Contact page</h2>
-
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.265588856342!2d73.91455641541671!3d18.562061287384868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b3a3bf%3A0x6f7fdcc8e4d6c77e!2sPhoenix%20Marketcity%20-%20Viman%20Nagar!5e0!3m2!1sen!2sin!4v1664345115285!5m2!1sen!2sin"
-        width="100%"
-        height="400"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-        title="k"
-        referrerPolicy="no-referrer-when-downgrade"></iframe>
-
-      <div className="container">
-        <div className="contact-form">
-          <form
-            action="https://formspree.io/f/xeqdgwnq"
-            method="POST"
-            className="contact-inputs">
-            <input
-              type="text"
-              placeholder="username"
-              name="username"
-              required
-              autoComplete="off"
-            />
-
-            <input
-              type="email"
-              name="Email"
-              placeholder="Email"
-              autoComplete="off"
-              required
-            />
-
-            <textarea
-              name="Message"
-              cols="30"
-              rows="10"
-              required
-              autoComplete="off"
-              placeholder="Enter you message"></textarea>
-
-            <input type="submit" value="send" />
-          </form>
-        </div>
+    <section className="bg-bubble-gum py-20">
+      <div className="container mx-auto max-w-lg px-4">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitForm}>
+          <div className="mb-4">
+            <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
+            <input type="text" name="username" id="username" value={contact.username} onChange={handleInputChange} autoComplete='off' required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <input type="email" name="email" id="email" value={contact.email} onChange={handleInputChange} autoComplete='off' required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">Message</label>
+            <textarea name="message" id="message" value={contact.message} onChange={handleInputChange} cols={30} rows={10} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+          </div>
+          <div className="flex justify-end">
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+          </div>
+        </form>
       </div>
-    </Wrapper>
+    </section>
   );
 };
 

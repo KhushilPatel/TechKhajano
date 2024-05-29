@@ -10,10 +10,10 @@ const About = () => {
   };
 
   return (
-    <>
+    <div className='bg-bubble-gum'>
       {myName}
      
-      <div className="about-section container mx-auto px-4 py-8">
+      <div className="about-section container mx-auto px-4  py-8">
         <h2 className="text-3xl font-bold mb-4">About Us</h2>
         <p className="text-lg mb-4">
           Welcome to <strong>TechKhajano</strong>, your number one source for all things
@@ -40,7 +40,7 @@ const About = () => {
           Khushil Patel, Founder
         </p>
       </div>
-    </>
+    </div>
   );
 };
 
