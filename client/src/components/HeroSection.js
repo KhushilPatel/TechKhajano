@@ -11,7 +11,7 @@ const HeroSection = ({ myData }) => {
   };
 
   return (
-    <div className="py-48 bg-bubble-gum">
+    <div className="py-48 bg-white">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="hero-section-data">
@@ -23,7 +23,7 @@ const HeroSection = ({ myData }) => {
             
               <Button 
                 onClick={handleClick}
-                className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none"
+              
               >
                 Shop Now
               </Button>

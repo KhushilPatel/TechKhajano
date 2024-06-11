@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./store/auth";
 import { toast } from "react-toastify";
+import { Button } from "./styles/Button";
 const Login = () => {
   const [user, setuser] = useState({
     email: "",
@@ -93,12 +94,12 @@ console.log("object",res_data)
             />
           </div>
           <div className="flex items-center justify-between">
-            <button
+            <Button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            
             >
               Login
-            </button>
+            </Button>
             <a href="#" className="text-blue-500 hover:underline">
               Forgot password?
             </a>

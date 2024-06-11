@@ -1,6 +1,7 @@
 import React from 'react';
 import { InfiniteMovingCards } from './ui/infinite-moving-cards';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../styles/Button';
 
 const Trusted = () => {
   const navigate = useNavigate();
@@ -60,9 +61,9 @@ const Trusted = () => {
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
             Sign up for the latest news, facts, analysis, and original stories about Amazon India delivered to you.
           </p>
-          <button className="bg-bubble-gum text-white py-2 px-4 rounded-full transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-bubble-gum focus:ring-offset-2" onClick={handleClick}>
+          <Button onClick={handleClick}>
             Register Now
-          </button>
+          </Button>
         </div>
       </div>
     </section>

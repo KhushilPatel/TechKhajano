@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "./store/auth";
 import { Meteors } from "./components/ui/meteors";
+import { Button } from "./styles/Button";
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
@@ -159,12 +160,12 @@ const Register = () => {
             />
           </div>
           <div>
-            <button
+            <Button
               type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              
             >
               Register
-            </button>
+            </Button>
           </div>
         </form>
       </div>

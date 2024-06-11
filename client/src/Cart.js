@@ -9,14 +9,18 @@ import { useAuth } from "./store/auth";
 const Cart = () => {
   const { cart, clearCart, total_price, shipping_fee } = useCartContext();
   const { isLoggedIn } = useAuth();
-  console.log("object",cart)
+  console.log("object", cart);
 
   if (!isLoggedIn) {
     return (
       <EmptyDiv>
         <h3>Please login to view your cart.</h3>
-        <NavLink to={"/login"}><Button>Sign in to your accounts </Button> </NavLink>
-        <NavLink to={"/register"}><Button>Sign up now</Button> </NavLink>
+        <NavLink to={"/login"}>
+          <Button>Sign in to your accounts </Button>{" "}
+        </NavLink>
+        <NavLink to={"/register"}>
+          <Button>Sign up now</Button>{" "}
+        </NavLink>
       </EmptyDiv>
     );
   }
@@ -31,32 +35,33 @@ const Cart = () => {
 
   return (
     <Wrapper>
-      <div className="container">
-        <div className="cart_heading grid grid-five-column">
-          <p>Item</p>
-          <p className="cart-hide">Price</p>
-          <p>Quantity</p>
-          <p className="cart-hide">Subtotal</p>
-          <p>Remove</p>
+      <div className="flex ml-9">
+        <div>
+          <div className="cart_heading grid grid-five-column">
+            <p>Item</p>
+            <p className="cart-hide">Price</p>
+            <p>Quantity</p>
+            <p className="cart-hide">Subtotal</p>
+            <p>Remove</p>
+          </div>
+          <hr />
+          <div className="cart-item">
+            {cart?.map((curElem) => {
+              return <CartItem key={curElem.id} {...curElem} />;
+            })}
+          </div>
+          <hr />
+          <div className="cart-two-button">
+            <NavLink to="/products">
+              <Button> continue Shopping </Button>
+            </NavLink>
+            <Button className="btn btn-clear" onClick={clearCart}>
+              clear cart
+            </Button>
+          </div>
         </div>
-        <hr />
-        <div className="cart-item">
-          {cart?.map((curElem) => {
-            return <CartItem key={curElem.id} {...curElem} />;
-          })}
-        </div>
-        <hr />
-        <div className="cart-two-button">
-          <NavLink to="/products">
-            <Button> continue Shopping </Button>
-          </NavLink>
-          <Button className="btn btn-clear" onClick={clearCart}>
-            clear cart
-          </Button>
-        </div>
-
         {/* order total_amount */}
-        <div className="order-total--amount">
+        <div className="order-total--amount ">
           <div className="order-total--subdata">
             <div>
               <p>subtotal:</p>
@@ -77,6 +82,13 @@ const Cart = () => {
                 <FormatPrice price={shipping_fee + total_price} />
               </p>
             </div>
+            <NavLink to={"/checkout"}>
+
+          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Checkout
+</Button>
+            </NavLink>
+
           </div>
         </div>
       </div>
@@ -207,13 +219,13 @@ const Wrapper = styled.section`
   }
 
   .order-total--amount {
-    width: 100%;
-    margin: 4.8rem 0;
+    width: 30%;
+    margin-left:50px;
     text-transform: capitalize;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+
+    justify-content: center;
+    align-items: flex-start;
 
     .order-total--subdata {
       border: 0.1rem solid #f0f0f0;

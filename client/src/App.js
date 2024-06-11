@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import Register from "./Register";
 import Login from "./Login";
 import Logout from "./components/Logout";
+import Checkout from "./components/Checkout";
 
 const App = () => {
   const theme = {
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/singleproduct/:id" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

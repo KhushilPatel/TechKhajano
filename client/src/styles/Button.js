@@ -1,25 +1,23 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  text-decoration: none;
-  max-width: auto;
-  background-color: rgb(98 84 243);
-  color: rgb(255 255 255);
-  padding: 1.4rem 2.4rem;
+  background-color: rgba(0, 119, 224, 0.8) ;
+  color: rgba(255, 255, 255);
+  padding: 0.5rem 1rem;
   border: none;
-  text-transform: uppercase;
-  text-align: center;
+  border-radius: 9999px; /* Full rounded corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
+  outline: none;
 
   &:hover,
-  &:active {
-    box-shadow: 0 2rem 2rem 0 rgb(132 144 255 / 30%);
-    box-shadow: ${({ theme }) => theme.colors.shadowSupport};
-    transform: scale(0.96);
+  &:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.bubbleGum}, 0 0 0 4px rgb(255 255 255);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.bubbleGum}, 0 0 0 4px rgb(255 255 255);
   }
 
   a {

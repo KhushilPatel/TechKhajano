@@ -20,9 +20,9 @@ const Footer = () => {
             <h3 className="text-3xl font-bold">Talk to us today</h3>
           </div>
           <div>
-            <button className="btn bg-blue-500 text-white px-6 py-3 rounded-lg mt-4 md:mt-0" onClick={handleClick}>
+            <Button onClick={handleClick}>
               Connect Us
-            </button>
+            </Button>
           </div>
         </div>
       </section>
@@ -59,7 +59,7 @@ const Footer = () => {
           
           <div>
             <h3 className="text-2xl font-bold">Call Us</h3>
-            <h3 className="text-xl mt-4">+91 12345678978</h3>
+            <h3 className="text-xl mt-4">+91 7984302453</h3>
           </div>
         </div>
         

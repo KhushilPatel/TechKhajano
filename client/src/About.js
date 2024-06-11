@@ -10,7 +10,7 @@ const About = () => {
   };
 
   return (
-    <div className='bg-bubble-gum'>
+    <div className='bg-white'>
       {myName}
      
       <div className="about-section container mx-auto px-4  py-8">

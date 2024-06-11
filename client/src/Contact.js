@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { toast } from 'react-toastify';
 import { useAuth } from './store/auth';
+import { Button } from './styles/Button';
 
 const defaultContactForm={
   username:"",
@@ -55,9 +56,9 @@ const Contact = () => {
    } 
    }
   return (
-    <section className="bg-bubble-gum py-20">
+    <section className="bg-white py-20">
       <div className="container mx-auto max-w-lg px-4">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitForm}>
+        <form className="bg-slate-50 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitForm}>
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
             <input type="text" name="username" id="username" value={contact.username} onChange={handleInputChange} autoComplete='off' required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
@@ -71,7 +72,7 @@ const Contact = () => {
             <textarea name="message" id="message" value={contact.message} onChange={handleInputChange} cols={30} rows={10} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
           </div>
           <div className="flex justify-end">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+            <Button type="submit" >Submit</Button>
           </div>
         </form>
       </div>

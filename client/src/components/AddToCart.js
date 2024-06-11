@@ -30,13 +30,13 @@ const AddToCart = ({ product }) => {
           Color:
           {colors.map((curColor, index) => {
             return (
-              <button
+              <Button
                 key={index}
                 style={{ backgroundColor: curColor }}
                 className={color === curColor ? "btnStyle active" : "btnStyle"}
                 onClick={() => setColor(curColor)}>
                 {color === curColor ? <FaCheck className="checkStyle" /> : null}
-              </button>
+              </Button>
             );
           })}
         </p>
