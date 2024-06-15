@@ -30,22 +30,17 @@ const AddToCart = ({ product }) => {
 
   return (
     <Wrapper>
-      <div className="colors">
-        <p>
-          Color:
-          {colors.map((curColor, index) => {
-            return (
-              <Button
-                key={index}
-                style={{ backgroundColor: curColor }}
-                className={color === curColor ? "btnStyle active" : "btnStyle"}
-                onClick={() => setColor(curColor)}>
-                {color === curColor ? <FaCheck className="checkStyle" /> : null}
-              </Button>
-            );
-          })}
-        </p>
-      </div>
+      <div className='flex'>
+                <p>Colors:</p>
+                <div className='flex items-center'>
+                    {colors.map((curColor, index) => {
+                        return (
+                          /* {color === curColor ? active} */
+                                <button key={index} style={{ backgroundColor: curColor }} className=' p-0.5 rounded-full mx-2 h-4 w-4 ' onClick={() => { setColor(curColor) }}>{color === curColor ? <FaCheck className='w-3 h-3 text-[#ffffff]' /> : null}</button>                          
+                        )
+                    })}
+                </div>
+            </div>
 
       {/* add to cart  */}
       <CartAmountToggle

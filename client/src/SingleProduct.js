@@ -39,13 +39,13 @@ const SingleProduct = () => {
 
   return (
     <section className="py-36">
-      <PageNavigation title={name} />
-      <div className="container mx-auto px-4">
+      
+      <div className=" mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8">
           {/* product Images  */}
-          <div className="flex items-center">
-            <MyImage imgs={image} />
-          </div>
+          <div className=" mx-3">
+                <MyImage imgs={image} />
+              </div>
 
           {/* product data */}
           <div className="flex flex-col items-start justify-center gap-8">
