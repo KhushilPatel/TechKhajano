@@ -2,8 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 
 import { toast } from 'react-toastify';
-import { useAuth } from './store/auth';
+
 import { Button } from './styles/Button';
+import { useAuth } from './context/auth';
 
 const defaultContactForm={
   username:"",

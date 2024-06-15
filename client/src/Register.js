@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "./store/auth";
+
 import { Meteors } from "./components/ui/meteors";
 import { Button } from "./styles/Button";
+import { useAuth } from "./context/auth";
 const Register = () => {
   const [user, setUser] = useState({
     username: "",

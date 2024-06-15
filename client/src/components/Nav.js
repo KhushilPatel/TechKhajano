@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu } from "react-icons/cg";
 import { useCartContext } from "../context/cart_context";
-import { useAuth } from "../store/auth";
+import { useAuth } from "../context/auth";
+
 
 const Nav = () => {
   const { isLoggedIn } = useAuth();
@@ -61,6 +62,7 @@ const Nav = () => {
                   isActive ? "text-bubble-gum hover:text-bubble-gum" : "text-white hover:text-bubble-gum"
                 }
               >
+
                 Logout
               </NavLink>
             </li>

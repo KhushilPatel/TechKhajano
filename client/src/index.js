@@ -9,7 +9,8 @@ import reportWebVitals from "./reportWebVitals";
 import { AppProvider } from "./context/productcontex";
 import { FilterContextProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
-import { AuthProvider } from "./store/auth";
+import { AuthProvider } from "./context/auth";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(

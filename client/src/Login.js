@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./store/auth";
+
 import { toast } from "react-toastify";
 import { Button } from "./styles/Button";
+import { useAuth } from "./context/auth";
 const Login = () => {
   const [user, setuser] = useState({
     email: "",
@@ -36,12 +37,13 @@ const Login = () => {
 console.log("object",res_data)
       if (response.ok) {
         // localStorage.setItem("token",res_data.token)
-        storeTokenInLs(res_data.token);
-        setuser({
-          email: "",
-          password: "",
-        });
+        storeTokenInLs(res_data?.token);
         navigate("/products");
+        window.location.reload()
+          setuser({
+            email: "",
+            password: "",
+          });
         toast.success("Login Successfull");
       } else {
         toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);

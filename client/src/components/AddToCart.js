@@ -23,6 +23,11 @@ const AddToCart = ({ product }) => {
     amount < stock ? setAmount(amount + 1) : setAmount(stock);
   };
 
+  const handleClick = () => {
+    addToCart(id, color, amount, product);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Wrapper>
       <div className="colors">
@@ -49,7 +54,7 @@ const AddToCart = ({ product }) => {
         setIncrease={setIncrease}
       />
 
-      <NavLink to="/cart" onClick={() => addToCart(id, color, amount, product)}>
+      <NavLink to="/cart" onClick={handleClick}>
         <Button className="btn">Add To Cart</Button>
       </NavLink>
     </Wrapper>

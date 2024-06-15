@@ -4,7 +4,8 @@ import CartItem from "./components/CartItem";
 import { NavLink } from "react-router-dom";
 import { Button } from "./styles/Button";
 import FormatPrice from "./Helpers/FormatPrice";
-import { useAuth } from "./store/auth";
+import { useAuth } from "./context/auth";
+
 
 const Cart = () => {
   const { cart, clearCart, total_price, shipping_fee } = useCartContext();
