@@ -19,7 +19,7 @@ const FilterSection = () => {
       newVal = newVal.flat();
     }
 
-    return ["all", ...new Set(newVal)];
+    return (newVal = ["all", ...new Set(newVal)]);
   };
 
   // we need to have the individual data of each in an array format
@@ -67,7 +67,7 @@ const FilterSection = () => {
             name="company"
             id="company"
             className="p-1.5 text-lg capitalize"
-            onClick={updateFilterValue}
+            onChange={updateFilterValue}
           >
             {companyData.map((curElem, index) => (
               <option key={index} value={curElem} name="company">

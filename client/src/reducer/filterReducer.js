@@ -1,4 +1,5 @@
 const filterReducer = (state, action) => {
+  console.log("object",action)
   switch (action.type) {
     case "LOAD_FILTER_PRODUCTS":
       let priceArr = action.payload.map((curElem) => curElem.price);
