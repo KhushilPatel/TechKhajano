@@ -5,6 +5,7 @@ import { useAuth } from "../context/auth";
 import { FaRegUser } from "react-icons/fa";
 import { useFilterContext } from "../context/filter_context";
 import { RiShoppingCartLine } from "react-icons/ri";
+import Chat from "./Chat";
 const HeaderContainer = styled.header`
   background-color: #232f3e;
   height: 60px;
@@ -73,14 +74,14 @@ const SearchInput = styled.input`
 
 const SearchButton = styled.button`
   padding: 8px 16px;
-  background-color: #febd69;
+  background-color: #F28043;
   border: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 16px;
 
   &:hover {
-    background-color: #f3a847;
+    background-color: #F06418;
   }
 `;
 
@@ -217,6 +218,7 @@ const Header = () => {
           <DropdownItem to="/register">New Customer</DropdownItem>
         </>
         }
+        <DropdownItem to="/chat">Chat</DropdownItem>
          <DropdownItem to="/contact">Contact Us</DropdownItem>
         </DropdownMenu>
       </AccountSection>

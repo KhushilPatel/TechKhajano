@@ -17,6 +17,7 @@ import Register from "./Register";
 import Login from "./Login";
 import Logout from "./components/Logout";
 import Checkout from "./components/Checkout";
+import Chat from "./components/Chat";
 
 const App = () => {
   const theme = {
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/singleproduct/:id" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/checkout" element={<Checkout/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
