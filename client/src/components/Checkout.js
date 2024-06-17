@@ -21,8 +21,7 @@ const schema = z.object({
 const Checkout = () => {
   const { cart, total_price, shipping_fee } = useCartContext();
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [showRazorpay, setShowRazorpay] = useState(false);
-
+  
   const {
     register,
     handleSubmit,
@@ -44,24 +43,9 @@ const Checkout = () => {
   const onSubmit = (data) => {
     console.log("Form Data: ", data);
     console.log("Selected Payment Method: ", data.paymentMethod);
-    // Show Razorpay dialog if payment method is not COD
-    if (data.paymentMethod !== "cod") {
-      setShowRazorpay(true);
-    } else {
-      // Handle COD payment
-      console.log("COD Payment selected");
-    }
+ 
   };
 
-  const handleRazorpaySuccess = (response) => {
-    console.log("Payment Successful", response);
-    setShowRazorpay(false);
-  };
-
-  const handleRazorpayFailure = (response) => {
-    console.log("Payment Failed", response);
-    setShowRazorpay(false);
-  };
 
   return (
     <div className="container mx-auto p-6">
@@ -242,13 +226,7 @@ const Checkout = () => {
           </div>
         </div>
       </form>
-      {showRazorpay && (
-        <RazorpayComponent
-          amount={total_price + shipping_fee}
-          onSuccess={handleRazorpaySuccess}
-          onFailure={handleRazorpayFailure}
-        />
-      )}
+     
     </div>
   );
 };

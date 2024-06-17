@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-import { Meteors } from "./components/ui/meteors";
-import { Button } from "./styles/Button";
 import { useAuth } from "./context/auth";
+import { Button } from "./styles/Button";
+
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
@@ -55,36 +54,14 @@ const Register = () => {
   };
 
   return (
-    
-    <div className= " flex items-center justify-center bg-gray-100 overflow-x-hidden">
-        <div className="">
-      <div className=" w-screen   relative ">
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
-        <div className="relative shadow-xl   bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
-          <div className="h-5 w-5 rounded-full border flex items-center justify-center mb-4 border-gray-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-2 w-2 text-gray-300"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"
-              />
-            </svg>
-          </div>
- 
-          <div className="bg-white p-8 rounded-lg shadow-lg mx-[30%] w-full max-w-lg">
-        <div className="text-4xl font-bold text-center mb-14  text-heading">Register</div>
-        <form onSubmit={submitForm} className="space-y-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md p-8 bg-white shadow-md rounded-md">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-900">Register</h2>
+        <form onSubmit={submitForm} className="space-y-4">
           <div>
             <label
               htmlFor="username"
-              className="block text-lg font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700"
             >
               Username
             </label>
@@ -97,13 +74,13 @@ const Register = () => {
               placeholder="Enter your name"
               autoComplete="off"
               required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-lg font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700"
             >
               Email
             </label>
@@ -116,13 +93,13 @@ const Register = () => {
               placeholder="Enter your email"
               autoComplete="off"
               required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
           <div>
             <label
               htmlFor="password"
-              className="block text-lg font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700"
             >
               Password
             </label>
@@ -135,13 +112,13 @@ const Register = () => {
               placeholder="Enter your password"
               autoComplete="off"
               required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
           <div>
             <label
               htmlFor="phone"
-              className="block text-lg font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700"
             >
               Phone
             </label>
@@ -157,26 +134,19 @@ const Register = () => {
               pattern="[0-9]*"
               title="Please enter only numbers"
               required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
           <div>
             <Button
               type="submit"
-              
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Register
             </Button>
           </div>
         </form>
       </div>
- 
-          {/* Meaty part - Meteor effect */}
-          <Meteors number={20} />
-        </div>
-      </div>
-    </div>
-      
     </div>
   );
 };

@@ -1,39 +1,24 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import React, { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button } from "./styles/Button";
 import { useAuth } from "./context/auth";
+
 const Login = () => {
-  const [user, setuser] = useState({
+  const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const { storeTokenInLs } = useAuth();
   const navigate = useNavigate();
-  const handleinput = (e) => {
-    console.log(e);
-    let name = e.target.name;
-    let value = e.target.value;
 
-    setuser({
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUser({
       ...user,
       [name]: value,
     });
   };
-  // useEffect(() => {
-  //   const checkToken= async () => {
-  //     const token = storeTokenInLs(); 
-  //     console.log("token",token)
-  //     if (token) {
-        
-  //       navigate('/product');
-  //     }
-  //   };
-
-  //   checkToken();
-  // }, [storeTokenInLs]); 
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -47,17 +32,14 @@ const Login = () => {
       });
 
       const res_data = await response.json();
-console.log("object",res_data)
       if (response.ok) {
-        // localStorage.setItem("token",res_data.token)
-        storeTokenInLs(res_data?.token);
+        storeTokenInLs(res_data.token);
         navigate("/products");
-        // window.location.reload()
-          setuser({
-            email: "",
-            password: "",
-          });
-        toast.success("Login Successfull");
+        setUser({
+          email: "",
+          password: "",
+        });
+        toast.success("Login Successful");
       } else {
         toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
       }
@@ -65,6 +47,7 @@ console.log("object",res_data)
       console.log("login", error);
     }
   };
+
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
@@ -81,7 +64,7 @@ console.log("object",res_data)
               type="email"
               name="email"
               value={user.email}
-              onChange={handleinput}
+              onChange={handleInput}
               id="email"
               placeholder="Enter your email"
               autoComplete="off"
@@ -100,7 +83,7 @@ console.log("object",res_data)
               type="password"
               name="password"
               value={user.password}
-              onChange={handleinput}
+              onChange={handleInput}
               id="password"
               placeholder="Enter your password"
               autoComplete="off"
@@ -111,13 +94,19 @@ console.log("object",res_data)
           <div className="flex items-center justify-between">
             <Button
               type="submit"
-            
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Login
             </Button>
-            <a href="#" className="text-blue-500 hover:underline">
+            <NavLink to="/forgot-password" className="text-blue-500 hover:underline">
               Forgot password?
-            </a>
+            </NavLink>
+          </div>
+          <div className="text-center mt-4">
+            <span className="text-gray-600">Don't have an account? </span>
+            <NavLink to="/register" className="text-blue-500 hover:underline">
+              Register
+            </NavLink>
           </div>
         </form>
       </div>

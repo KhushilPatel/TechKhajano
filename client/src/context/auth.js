@@ -6,20 +6,23 @@ import Cookies from "js-cookie"; // Import js-cookie
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(Cookies.get("token"));
+  // const [token, setToken] = useState(Cookies.get("token"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const authorizationToken = `Bearer ${token}`;
 
   const storeTokenInLs = (serverToken) => {
     setToken(serverToken);
-    Cookies.set("token", serverToken, { expires: 7 }); // Set cookie to expire in 7 days
+    localStorage.setItem("token", serverToken);
+    // Cookies.set("token", serverToken, { expires: 7 }); // Set cookie to expire in 7 days
     
   };
 
   const LogoutUser = () => {
+    localStorage.removeItem("token");
     setToken("");
-    Cookies.remove("token");
+    // Cookies.remove("token");
     // window.location.reload()
   };
 
@@ -49,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     userAuthentication();
-  }, []);
+  }, [token]);
 
   return (
     <AuthContext.Provider

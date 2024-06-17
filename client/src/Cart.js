@@ -26,14 +26,18 @@ const Cart = () => {
     );
   }
 
-  if (cart?.length === 0) {
+  console.log(cart, "cart length")
+  if (cart === null) {
     return (
       <EmptyDiv>
-        <h3>No Item in Cart </h3>
+        <h3>Your TechKhajano Cart is Empty </h3>
+        <NavLink to="/products">
+          <Button> Go to shopping </Button>
+        </NavLink>
       </EmptyDiv>
+
     );
   }
-
   return (
     <Wrapper>
       <div className="flex ml-9">
