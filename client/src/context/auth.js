@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   const LogoutUser = () => {
     setToken("");
     Cookies.remove("token");
-    window.location.reload()
+    // window.location.reload()
   };
 
   let isLoggedIn = !!token;

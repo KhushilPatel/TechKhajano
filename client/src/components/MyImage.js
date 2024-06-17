@@ -12,8 +12,8 @@ const MyImage = ({ imgs = [{ url: "" }] }) => {
   return (
     <>
      
-        <div className='flex items-center justify-center border-2 '>
-          <div className='flex-col justify-center items-center border-2'>
+        <div className='flex items-center justify-center '>
+          <div className='flex-col justify-center items-center '>
             {imgs.map((curElem, index) => {
               return (
                 <figure key={index}>

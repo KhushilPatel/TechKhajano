@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +22,19 @@ const Login = () => {
       [name]: value,
     });
   };
+  // useEffect(() => {
+  //   const checkToken= async () => {
+  //     const token = storeTokenInLs(); 
+  //     console.log("token",token)
+  //     if (token) {
+        
+  //       navigate('/product');
+  //     }
+  //   };
+
+  //   checkToken();
+  // }, [storeTokenInLs]); 
+
   const submitForm = async (e) => {
     e.preventDefault();
     try {
@@ -39,7 +52,7 @@ console.log("object",res_data)
         // localStorage.setItem("token",res_data.token)
         storeTokenInLs(res_data?.token);
         navigate("/products");
-        window.location.reload()
+        // window.location.reload()
           setuser({
             email: "",
             password: "",
