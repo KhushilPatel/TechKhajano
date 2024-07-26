@@ -4,12 +4,15 @@ import FormatPrice from '../Helpers/FormatPrice';
 
 const Product = (curElem) => {
   const { id, name, image, price, category } = curElem;
+  const handeclick=()=>{
+    window.scrollTo(0, 0); 
+  }
   return (
     <>
       <div className='mx-5 '>
         <div
           className="transform rounded-lg bg-white shadow-xl transition duration-700 hover:translate-x-4 hover:-translate-y-1 ">
-          <Link to={`/singleProduct/${id}`}>
+          <Link to={`/singleProduct/${id}`} onClick={handeclick}>
       
            <img className="p-2 h-48 w-72 animate-jump-in object-contain" src={image[0].url} alt={name}/>
            

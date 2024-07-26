@@ -10,7 +10,7 @@ import { useAuth } from "./context/auth";
 const Cart = () => {
   const { cart, clearCart, total_price, shipping_fee } = useCartContext();
   const { isLoggedIn } = useAuth();
-  console.log("object", cart);
+
 
   if (!isLoggedIn) {
     return (
@@ -26,8 +26,8 @@ const Cart = () => {
     );
   }
 
-  console.log(cart, "cart length")
-  if (cart === null) {
+  console.log(cart.length, "cart length")
+  if (cart.length === 0) {
     return (
       <EmptyDiv>
         <h3>Your TechKhajano Cart is Empty </h3>

@@ -48,6 +48,13 @@ const login = async (req, res) => {
     const validPassowrd = await user.comparePassword(password);
 
     if (validPassowrd) {
+      // If you Want to set cookie from backed directly
+      // res.cookie('token', token, {
+      //   httpOnly: true, // Ensures the cookie is only accessible via web server
+      //   secure: process.env.NODE_ENV === 'production',
+      //   sameSite: 'Lax', // Ensures the cookie is only sent over HTTPS in production
+      //   maxAge: 24 * 60 * 60 * 1000, // 1 day
+      // });
       return res
         .status(201)
         .json({

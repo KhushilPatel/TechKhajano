@@ -5,6 +5,9 @@ import * as z from "zod";
 import { useCartContext } from "../context/cart_context";
 import FormatPrice from "../Helpers/FormatPrice";
 import RazorpayComponent from "./Razorpay"; // Import the Razorpay component
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
 
 const schema = z.object({
   fullName: z.string().min(1, "Full Name is required"),
@@ -21,7 +24,8 @@ const schema = z.object({
 const Checkout = () => {
   const { cart, total_price, shipping_fee } = useCartContext();
   const [paymentMethod, setPaymentMethod] = useState("");
-  
+  const [orderPlaced, setOrderPlaced] = useState(false);
+const navigate=useNavigate()
   const {
     register,
     handleSubmit,
@@ -41,11 +45,29 @@ const Checkout = () => {
   };
 
   const onSubmit = (data) => {
-    console.log("Form Data: ", data);
-    console.log("Selected Payment Method: ", data.paymentMethod);
- 
+    const orderData = {
+      ...data,
+      cart,
+      total_price,
+      shipping_fee,
+      final_total: shipping_fee + total_price,
+    };
+  
+    console.log("orderData",orderData)
+    axios.post('http://localhost:4000/api/order/collections', orderData)
+      .then(response => {
+        console.log('Order placed successfully:', response.data);
+        setOrderPlaced(true);
+        setTimeout(() => {
+          setOrderPlaced(false);
+          navigate('/products'); 
+        }, 2000);
+      })
+      .catch(error => {
+        console.error('Error placing order:', error);
+      });
   };
-
+  
 
   return (
     <div className="container mx-auto p-6">
@@ -135,7 +157,7 @@ const Checkout = () => {
                             placeholder="Card Number"
                             className="w-full p-2 border border-gray-300 rounded"
                           />
-                          {/* Add other fields as needed */}
+                      
                         </div>
                       )}
                     </div>
@@ -226,7 +248,14 @@ const Checkout = () => {
           </div>
         </div>
       </form>
-     
+      {orderPlaced && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-md">
+            <h2 className="text-2xl font-bold text-green-600">Order Placed Successfully!</h2>
+            <p className="mt-2">Thank you for your purchase. Your order is being processed.</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

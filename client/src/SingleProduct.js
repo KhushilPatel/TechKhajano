@@ -8,6 +8,8 @@ import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import Star from "./components/Star";
 import AddToCart from "./components/AddToCart";
 import { FaCheck } from "react-icons/fa";
+import { BallTriangle } from 'react-loader-spinner';
+
 import ProductSidebar from "./components/ProductSidebar";
 
 const API = "https://660259139d7276a755530cf6.mockapi.io/products";
@@ -16,9 +18,11 @@ const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
   const { id } = useParams();
-  const { colors=[] } = singleProduct;
-console.log("color",colors)
-  const [color, setColor] = useState(colors.length > 0 ? colors[0] : '');
+  const  {colors}  = singleProduct;
+  // const firstColor=colors&&colors[0];
+  const [color, setColor] = useState(colors)
+  console.log("Colors",color)
+
 
   useEffect(() => {
     getSingleProduct(`${API}/${id}`);
@@ -26,11 +30,12 @@ console.log("color",colors)
 
   if (isSingleLoading) {
     return (
-      <div className="text-3xl flex justify-center items-center">
-        Loading.....
+      <div className="text-3xl flex justify-center items-center h-screen">
+        <BallTriangle height="50" width="50" color="#4db653" ariaLabel="loading" />
       </div>
     );
   }
+
 
   const { name, company, price, description, stock, stars, reviews, image } =
     singleProduct;

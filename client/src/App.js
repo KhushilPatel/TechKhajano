@@ -18,6 +18,7 @@ import Login from "./Login";
 import Logout from "./components/Logout";
 import Checkout from "./components/Checkout";
 import Chat from "./components/Chat";
+import Orders from "./Orders";
 
 const App = () => {
   const theme = {
@@ -61,6 +62,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/checkout" element={<Checkout/>} />
+          <Route path="/orders" element={<Orders/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
